@@ -1461,9 +1461,15 @@ export default function App() {
               </motion.div>
             )}
             
-            <footer className="py-20 text-center border-t border-gold/10 bg-white/50">
+            <footer className="py-24 text-center border-t border-gold/10 bg-white/50">
               <p className="font-serif italic text-luxury-black/40 text-sm">Created with love for a soul of pure gold.</p>
-              <p className="text-[8px] uppercase tracking-[0.4em] text-gold mt-4">© 2026 Forever Anushka</p>
+              
+              <div className="mt-8 space-y-3">
+                <p className="text-[10px] uppercase tracking-[0.5em] text-luxury-black/60 font-light">
+                  Designed & Crafted by <span className="text-gold font-medium">Harsh Pandya</span>
+                </p>
+                <p className="text-[8px] uppercase tracking-[0.4em] text-gold/40">© 2026 Forever Anushka</p>
+              </div>
             </footer>
           </motion.div>
         )}
