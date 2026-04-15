@@ -1108,25 +1108,7 @@ const BloomingBouquet = () => {
   );
 };
 
-const CountdownSection = ({ isUnlocked, onUnlock }: { isUnlocked: boolean, onUnlock: () => void }) => {
-  const [pressTimer, setPressTimer] = useState<NodeJS.Timeout | null>(null);
-  const [isPressing, setIsPressing] = useState(false);
-
-  const handleStart = () => {
-    setIsPressing(true);
-    const timer = setTimeout(() => {
-      onUnlock();
-      setIsPressing(false);
-    }, 3000); // 3 second long press to unlock
-    setPressTimer(timer);
-  };
-
-  const handleEnd = () => {
-    if (pressTimer) clearTimeout(pressTimer);
-    setIsPressing(false);
-    setPressTimer(null);
-  };
-
+const CountdownSection = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center p-8 text-center relative overflow-hidden bg-white/30">
       <motion.div
@@ -1140,29 +1122,14 @@ const CountdownSection = ({ isUnlocked, onUnlock }: { isUnlocked: boolean, onUnl
           <Countdown onComplete={() => {}} />
         </div>
         
-        <motion.div 
-          onPointerDown={handleStart}
-          onPointerUp={handleEnd}
-          onPointerLeave={handleEnd}
-          animate={isPressing ? { scale: 0.95, opacity: 0.8 } : { scale: 1, opacity: 1 }}
-          className="flex flex-col items-center gap-4 cursor-pointer group"
-        >
-          <div className="flex items-center gap-4 px-8 py-3 rounded-full border border-gold/20 bg-gold/5 text-gold transition-colors group-hover:bg-gold/10">
-            {isUnlocked ? <Unlock size={16} /> : <Lock size={16} />}
+        <div className="flex flex-col items-center gap-4 group">
+          <div className="flex items-center gap-4 px-8 py-3 rounded-full border border-gold/20 bg-gold/5 text-gold">
+            <Lock size={16} />
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold">
-              {isUnlocked ? "Access Granted" : "Locked Until 11.08.2026"}
+              Locked Until 11.08.2026
             </span>
           </div>
-          {!isUnlocked && (
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isPressing ? 1 : 0.3 }}
-              className="text-[8px] uppercase tracking-[0.2em] text-gold mt-2"
-            >
-              {isPressing ? "Hold to verify identity..." : "Long press to unlock (Admin)"}
-            </motion.p>
-          )}
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );
@@ -1301,17 +1268,14 @@ const GermanyDream = () => {
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
-  const [isUnlocked, setIsUnlocked] = useState(false);
   const { scrollYProgress } = useScroll();
 
-  const isLocked = !isUnlocked && new Date() < TARGET_DATE;
+  const isLocked = new Date() < TARGET_DATE;
 
   // --- Effects ---
   useEffect(() => {
-    // Scroll to top on load
     window.scrollTo(0, 0);
 
-    // Initialize Lenis for buttery smooth scrolling
     const lenis = new Lenis({
       duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -1329,9 +1293,6 @@ export default function App() {
     }
 
     requestAnimationFrame(raf);
-
-    // Handle Scroll Lock - Now only affects Lenis if we want to stop it entirely, 
-    // but we'll handle content visibility instead for a better experience.
     lenis.start();
     document.body.style.overflow = 'auto';
 
@@ -1339,37 +1300,12 @@ export default function App() {
       lenis.destroy();
       document.body.style.overflow = 'auto';
     };
-  }, []); // Remove isLocked dependency to keep Lenis always active for the reachable parts
-
-  // Secret Unlock Listener (Shift + Alt + U)
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.shiftKey && e.altKey && e.key.toLowerCase() === 'u') {
-        setIsUnlocked(prev => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (
-    <div className={`relative bg-cream min-h-screen overflow-x-hidden selection:bg-gold/30 selection:text-luxury-black luxury-grain ${isLocked ? 'max-h-screen' : ''}`}>
+    <div className="relative bg-cream min-h-screen overflow-x-hidden selection:bg-gold/30 selection:text-luxury-black luxury-grain">
       <CursorGlow />
 
-      {/* Admin Unlock Indicator */}
-      <AnimatePresence>
-        {isUnlocked && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-6 left-1/2 -translate-x-1/2 z-[300] bg-luxury-black text-gold px-4 py-2 rounded-full flex items-center gap-3 shadow-2xl border border-gold/20 backdrop-blur-md"
-          >
-            <ShieldCheck size={16} />
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Admin Mode: Scroll Unlocked</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
       <AnimatePresence mode="wait">
         {showIntro ? (
           <DreamIntro onNext={() => setShowIntro(false)} onSkip={() => setShowIntro(false)} />
@@ -1382,7 +1318,6 @@ export default function App() {
           >
             {/* Hero Section */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-              {/* Floating Background Elements */}
               <div className="absolute inset-0 pointer-events-none">
                 <Lily delay={0} scale={0.8} />
                 <Orchid delay={5} scale={1.2} />
@@ -1426,12 +1361,9 @@ export default function App() {
               </motion.div>
             </section>
 
-            <CountdownSection 
-              isUnlocked={isUnlocked} 
-              onUnlock={() => setIsUnlocked(true)} 
-            />
+            <CountdownSection />
             
-            {(isUnlocked || new Date() >= TARGET_DATE) && (
+            {new Date() >= TARGET_DATE && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -1440,7 +1372,6 @@ export default function App() {
                 <BaddieBlueprint />
                 <FrostedSoulMirror />
 
-                {/* Story Paragraphs */}
                 <div className="py-20">
                   {PARAGRAPHS.map((text, i) => (
                     <ParagraphCard key={i} text={text} index={i} />
@@ -1475,7 +1406,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Progress Bar */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-[4px] bg-gold origin-left z-[160]"
         style={{ scaleX: scrollYProgress }}
