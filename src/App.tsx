@@ -15,10 +15,10 @@ import Lenis from 'lenis';
 const TARGET_DATE = new Date('2026-08-11T00:00:00');
 
 // 2. The Photo inside the Intro Book
-const INTRO_BOOK_PHOTO = "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800";
+const INTRO_BOOK_PHOTO = "./intro.jpg.JPG";
 
 // 3. The Photo behind the "Frosted Soul Mirror"
-const MIRROR_PHOTO_URL = "https://picsum.photos/seed/anushka_pure/600/600";
+const MIRROR_PHOTO_URL = "./mirror.jpg.JPG";
 
 // 3. The Library Books (Titles, Colors, Content, and Photos)
 const BOOKS = [
@@ -54,28 +54,28 @@ const VIDEO_URLS = [
   "https://www.youtube.com/embed/dQw4w9WgXcQ"
 ];
 
-// 5. The Gallery Photos (Polaroids)
+// 5. The Gallery Photos (20 Polaroids)
 const POLAROID_IMAGES = [
-  { id: 1, url: "https://picsum.photos/seed/moment1/800/800", caption: "The First Smile" },
-  { id: 2, url: "https://picsum.photos/seed/moment2/800/800", caption: "Midnight Talks" },
-  { id: 3, url: "https://picsum.photos/seed/moment3/800/800", caption: "The Dreamers" },
-  { id: 4, url: "https://picsum.photos/seed/moment4/800/800", caption: "Pure Magic" },
-  { id: 5, url: "https://picsum.photos/seed/moment5/800/800", caption: "Forever & Always" },
-  { id: 6, url: "https://picsum.photos/seed/moment6/800/800", caption: "Sweet Memories" },
-  { id: 7, url: "https://picsum.photos/seed/moment7/800/800", caption: "Golden Hour" },
-  { id: 8, url: "https://picsum.photos/seed/moment8/800/800", caption: "Laughter" },
-  { id: 9, url: "https://picsum.photos/seed/moment9/800/800", caption: "The Journey" },
-  { id: 10, url: "https://picsum.photos/seed/moment10/800/800", caption: "Pure Joy" },
-  { id: 11, url: "https://picsum.photos/seed/moment11/800/800", caption: "Together" },
-  { id: 12, url: "https://picsum.photos/seed/moment12/800/800", caption: "Magic Moments" },
-  { id: 13, url: "https://picsum.photos/seed/moment13/800/800", caption: "The Best Days" },
-  { id: 14, url: "https://picsum.photos/seed/moment14/800/800", caption: "Sunshine" },
-  { id: 15, url: "https://picsum.photos/seed/moment15/800/800", caption: "Dreamy Eyes" },
-  { id: 16, url: "https://picsum.photos/seed/moment16/800/800", caption: "Soulmates" },
-  { id: 17, url: "https://picsum.photos/seed/moment17/800/800", caption: "The Adventure" },
-  { id: 18, url: "https://picsum.photos/seed/moment18/800/800", caption: "Our Story" },
-  { id: 19, url: "https://picsum.photos/seed/moment19/800/800", caption: "Endless Love" },
-  { id: 20, url: "https://picsum.photos/seed/moment20/800/800", caption: "The Future" },
+  { id: 1, url: "./photo1.jpg.JPG", caption: "The First Smile" },
+  { id: 2, url: "./photo2.jpg.JPG", caption: "Midnight Talks" },
+  { id: 3, url: "./photo3.jpg.JPG", caption: "The Dreamers" },
+  { id: 4, url: "./photo4.jpg.JPG", caption: "Pure Magic" },
+  { id: 5, url: "./photo5.jpg.JPG", caption: "Forever & Always" },
+  { id: 6, url: "./photo6.jpg.JPG", caption: "Sweet Memories" },
+  { id: 7, url: "./photo7.jpg.JPG", caption: "Golden Hour" },
+  { id: 8, url: "./photo8.jpg.JPG", caption: "Laughter" },
+  { id: 9, url: "./photo9.jpg.JPG", caption: "The Journey" },
+  { id: 10, url: "./photo10.jpg.JPG", caption: "Pure Joy" },
+  { id: 11, url: "./photo11.jpg.JPG", caption: "Together" },
+  { id: 12, url: "./photo12.jpg.JPG", caption: "Magic Moments" },
+  { id: 13, url: "./photo13.jpg.JPG", caption: "The Best Days" },
+  { id: 14, url: "./photo14.jpg.JPG", caption: "Sunshine" },
+  { id: 15, url: "./photo15.jpg.JPG", caption: "Dreamy Eyes" },
+  { id: 16, url: "./photo16.jpg.JPG", caption: "Soulmates" },
+  { id: 17, url: "./photo17.jpg.JPG", caption: "The Adventure" },
+  { id: 18, url: "./photo18.jpg.JPG", caption: "Our Story" },
+  { id: 19, url: "./photo19.jpg.JPG", caption: "Endless Love" },
+  { id: 20, url: "./photo20.jpg.JPG", caption: "The Future" },
 ];
 
 // 6. The Long Paragraphs (Chapters)
