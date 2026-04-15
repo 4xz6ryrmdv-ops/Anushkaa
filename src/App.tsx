@@ -51,7 +51,7 @@ const BOOKS = [
 // 4. The Video URLs (YouTube or MP4)
 // 4. The Video URLs (YouTube or MP4)
 const VIDEO_URLS = [
-  "https://www.youtube.com/embed/XXrkotbC7MY&si=EafvLAh50wkLx9Na",
+  "https://www.youtube.com/embed/XXrkotbC7MY",
   "https://www.youtube.com/embed/0ZjqeAhd6Ms?si=bD6dc_X0-5qut546"
 ];
 
