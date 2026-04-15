@@ -15,10 +15,10 @@ import Lenis from 'lenis';
 const TARGET_DATE = new Date('2026-08-11T00:00:00');
 
 // 2. The Photo inside the Intro Book
-const INTRO_BOOK_PHOTO = "./intro.jpg.JPG";
+const INTRO_BOOK_PHOTO = "./intro.jpg.jpg";
 
 // 3. The Photo behind the "Frosted Soul Mirror"
-const MIRROR_PHOTO_URL = "./mirror.jpg.JPG";
+const MIRROR_PHOTO_URL = "./mirror.jpg.jpg";
 
 // 3. The Library Books (Titles, Colors, Content, and Photos)
 const BOOKS = [
@@ -57,26 +57,26 @@ const VIDEO_URLS = [
 
 // 5. The Gallery Photos (20 Polaroids)
 const POLAROID_IMAGES = [
-  { id: 1, url: "./photo1.jpg.JPG", caption: "The First Smile" },
-  { id: 2, url: "./photo2.jpg.JPG", caption: "Midnight Talks" },
-  { id: 3, url: "./photo3.jpg.JPG", caption: "The Dreamers" },
-  { id: 4, url: "./photo4.jpg.JPG", caption: "Pure Magic" },
-  { id: 5, url: "./photo5.jpg.JPG", caption: "Forever & Always" },
-  { id: 6, url: "./photo6.jpg.JPG", caption: "Sweet Memories" },
-  { id: 7, url: "./photo7.jpg.JPG", caption: "Golden Hour" },
-  { id: 8, url: "./photo8.jpg.JPG", caption: "Laughter" },
-  { id: 9, url: "./photo9.jpg.JPG", caption: "The Journey" },
-  { id: 10, url: "./photo10.jpg.JPG", caption: "Pure Joy" },
-  { id: 11, url: "./photo11.jpg.JPG", caption: "Together" },
-  { id: 12, url: "./photo12.jpg.JPG", caption: "Magic Moments" },
-  { id: 13, url: "./photo13.jpg.JPG", caption: "The Best Days" },
-  { id: 14, url: "./photo14.jpg.JPG", caption: "Sunshine" },
-  { id: 15, url: "./photo15.jpg.JPG", caption: "Dreamy Eyes" },
-  { id: 16, url: "./photo16.jpg.JPG", caption: "Soulmates" },
-  { id: 17, url: "./photo17.jpg.JPG", caption: "The Adventure" },
-  { id: 18, url: "./photo18.jpg.JPG", caption: "Our Story" },
-  { id: 19, url: "./photo19.jpg.JPG", caption: "Endless Love" },
-  { id: 20, url: "./photo20.jpg.JPG", caption: "The Future" },
+  { id: 1, url: "./photo1.jpg.JPG", },
+  { id: 2, url: "./photo2.jpg.JPG", },
+  { id: 3, url: "./photo3.jpg.jpg", },
+  { id: 4, url: "./photo4.jpg.JPG", },
+  { id: 5, url: "./photo5.jpg.JPG", },
+  { id: 6, url: "./photo6.jpg.JPG", },
+  { id: 7, url: "./photo7.jpg.JPG", },
+  { id: 8, url: "./photo8.jpg.JPG", },
+  { id: 9, url: "./photo9.jpg.JPG", },
+  { id: 10, url: "./photo10.jpg.JPG", },
+  { id: 11, url: "./photo11.jpg.JPG", },
+  { id: 12, url: "./photo12.jpg.jpg", },
+  { id: 13, url: "./photo13.jpg.JPG", },
+  { id: 14, url: "./photo14.jpg.JPG", },
+  { id: 15, url: "./photo15.jpg.jpg", },
+  { id: 16, url: "./photo16.jpg.jpg", },
+  { id: 17, url: "./photo17.jpg.JPG", },
+  { id: 18, url: "./photo18.jpg.JPG", },
+  { id: 19, url: "./photo19.jpg.JPG", },
+  { id: 20, url: "./photo20.jpg.JPG", },
 ];
 
 // 6. The Long Paragraphs (Chapters)
