@@ -49,9 +49,10 @@ const BOOKS = [
 ];
 
 // 4. The Video URLs (YouTube or MP4)
+// 4. The Video URLs (YouTube or MP4)
 const VIDEO_URLS = [
-  "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  "https://www.youtube.com/embed/XXrkotbC7MY&si=EafvLAh50wkLx9Na",
+  "https://www.youtube.com/embed/0ZjqeAhd6Ms?si=bD6dc_X0-5qut546"
 ];
 
 // 5. The Gallery Photos (20 Polaroids)
@@ -1172,7 +1173,12 @@ const VideoSection = () => {
     <section className="py-24 px-6 bg-cream">
       <div className="max-w-4xl mx-auto flex flex-col gap-12">
         {VIDEO_URLS.map((url, index) => (
-          <div key={index} className="aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-gold/20">
+          <div 
+            key={index} 
+            className={`rounded-3xl overflow-hidden shadow-2xl border-4 border-gold/20 mx-auto ${
+              index === 1 ? 'aspect-[9/16] max-w-[350px]' : 'aspect-video w-full'
+            }`}
+          >
             <iframe 
               width="100%" 
               height="100%" 
