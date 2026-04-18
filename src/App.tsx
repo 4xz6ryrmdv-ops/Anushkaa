@@ -1118,6 +1118,7 @@ const CelebrationBurst = ({ trigger }: { trigger: boolean }) => {
             transition={{ duration: 0.5 }}
             className="absolute inset-0 bg-gold/20"
           />
+
           {[...Array(80)].map((_, i) => {
             const angle = Math.random() * Math.PI * 2;
             const velocity = 500 + Math.random() * 800;
@@ -1144,6 +1145,7 @@ const CelebrationBurst = ({ trigger }: { trigger: boolean }) => {
               </motion.div>
             );
           })}
+
           <motion.div
             initial={{ opacity: 0, scale: 0, rotate: -10 }}
             animate={{ opacity: [0, 1, 1, 1, 0], scale: [0.5, 1.1, 1, 1, 0.8], rotate: [ -10, 0, 0, 2, 0 ] }}
@@ -1166,6 +1168,30 @@ const CelebrationBurst = ({ trigger }: { trigger: boolean }) => {
         </div>
       )}
     </AnimatePresence>
+  );
+};
+
+const CountdownSection = () => {
+  return (
+    <section className="min-h-screen flex flex-col items-center justify-center p-8 text-center relative overflow-hidden bg-white/30">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative z-10"
+      >
+        <span className="text-[10px] uppercase tracking-[1.2em] text-gold mb-12 block">The Grand Reveal In</span>
+        <div className="scale-110 md:scale-150 mb-16">
+          <Countdown onComplete={() => {}} />
+        </div>
+        
+        <div className="flex flex-col items-center gap-4 group">
+          <div className="flex items-center gap-4 px-8 py-3 rounded-full border border-gold/20 bg-gold/5 text-gold font-bold uppercase tracking-[0.4em] text-[10px]">
+             Locked Until 11.08.2026
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 };
 
@@ -1224,74 +1250,27 @@ const FinalWish = () => {
 const GermanyDream = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden bg-luxury-black text-white">
-      {/* 3D Floating Elements */}
       <div className="absolute inset-0 opacity-20">
-        <motion.div 
-          animate={{ 
-            y: [0, -100, 0],
-            rotate: [0, 360],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 border border-gold/20 rounded-full"
-        />
-        <motion.div 
-          animate={{ 
-            y: [0, 100, 0],
-            rotate: [360, 0],
-            scale: [1, 1.5, 1]
-          }}
-          transition={{ duration: 25, repeat: Infinity }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 border border-white/10 rounded-full"
-        />
+        <motion.div animate={{ y: [0, -100, 0], rotate: [0, 360], scale: [1, 1.2, 1] }} transition={{ duration: 20, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-64 h-64 border border-gold/20 rounded-full" />
+        <motion.div animate={{ y: [0, 100, 0], rotate: [360, 0], scale: [1, 1.5, 1] }} transition={{ duration: 25, repeat: Infinity }} className="absolute bottom-1/4 right-1/4 w-96 h-96 border border-white/10 rounded-full" />
       </div>
 
       <div className="relative z-10 text-center max-w-3xl">
-        <motion.span 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-gold font-sans text-[10px] uppercase tracking-[0.8em] mb-8 block"
-        >
-          The Future Awaits
-        </motion.span>
-        
-        <motion.h2 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="font-serif italic text-5xl sm:text-7xl md:text-8xl mb-12 leading-tight"
-        >
-          A Journey to <br/> <span className="text-gold">Freedom</span>
-        </motion.h2>
+        <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-gold font-sans text-[10px] uppercase tracking-[0.8em] mb-8 block">The Future Awaits</motion.span>
+        <motion.h2 initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} className="font-serif italic text-5xl sm:text-7xl md:text-8xl mb-12 leading-tight">A Journey to <br/> <span className="text-gold">Freedom</span></motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm"
-          >
+          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} className="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
             <h3 className="font-serif text-2xl mb-4 text-gold italic">The Germany Dream</h3>
-            <p className="text-white/70 font-light leading-relaxed">
-              Her heart beats for the streets of Berlin and the freedom of a new life. A simple girl with a dream so big, it spans continents. Germany isn't just a destination; it's the beginning of her true story.
-            </p>
+            <p className="text-white/70 font-light leading-relaxed">Her heart beats for the streets of Berlin and the freedom of a new life. A simple girl with a dream so big, it spans continents. Germany isn't just a destination; it's the beginning of her true story.</p>
           </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm"
-          >
+          <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} className="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
             <h3 className="font-serif text-2xl mb-4 text-gold italic">The Library of Soul</h3>
-            <p className="text-white/70 font-light leading-relaxed">
-              Between the pages of her favorite books, she finds worlds as vast as her own ambition. Mature, understanding, and endlessly enthusiastic—she is a story still being written, and every chapter is pure gold.
-            </p>
+            <p className="text-white/70 font-light leading-relaxed">Between the pages of her favorite books, she finds worlds as vast as her own ambition. Mature, understanding, and endlessly enthusiastic—she is a story still being written, and every chapter is pure gold.</p>
           </motion.div>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="mt-20 flex flex-col items-center"
-        >
+        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} className="mt-20 flex flex-col items-center">
           <div className="w-[1px] h-24 bg-gradient-to-b from-gold to-transparent" />
           <p className="mt-6 font-script text-3xl text-gold">"Long live all the magic we made"</p>
         </motion.div>
@@ -1307,12 +1286,10 @@ export default function App() {
 
   const isLocked = new Date() < TARGET_DATE;
 
-  // This effect handles the one-time birthday celebration burst
   useEffect(() => {
     if (!isLocked && !hasCelebrated) {
       const handleScroll = () => {
-        // Trigger celebration when user scrolls into the birthday content
-        if (window.scrollY > window.innerHeight * 1.2) {
+        if (window.scrollY > window.innerHeight * 0.8) {
           setHasCelebrated(true);
           window.removeEventListener('scroll', handleScroll);
         }
@@ -1322,41 +1299,26 @@ export default function App() {
     }
   }, [isLocked, hasCelebrated]);
 
-  // --- Smooth Scroll Logic ---
   useEffect(() => {
     window.scrollTo(0, 0);
-
     const lenis = new Lenis({
       duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.8,
-      touchMultiplier: 1.5,
-      infinite: false,
     });
-
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
     lenis.start();
     document.body.style.overflow = 'auto';
-
-    return () => {
-      lenis.destroy();
-      document.body.style.overflow = 'auto';
-    };
+    return () => lenis.destroy();
   }, []);
 
   return (
     <div className="relative bg-cream min-h-screen overflow-x-hidden selection:bg-gold/30 selection:text-luxury-black luxury-grain">
       <CursorGlow />
-      
-      {/* The Awesome Birthday Burst */}
       <CelebrationBurst trigger={hasCelebrated} />
 
       <AnimatePresence mode="wait">
@@ -1398,32 +1360,16 @@ export default function App() {
                 </motion.div>
               </div>
 
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-              >
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
                 <span className="text-[8px] uppercase tracking-[0.5em] font-bold text-gold">Scroll to Explore</span>
-                <motion.div 
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <ChevronDown className="w-4 h-4 text-gold" />
-                </motion.div>
+                <ChevronDown className="w-4 h-4 text-gold animate-bounce" />
               </motion.div>
             </section>
 
-            {/* 2. Timer Section */}
             <CountdownSection />
             
-            {/* 3. Revealed Content (Only after her Birthday) */}
             {!isLocked && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-              >
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1.5 }}>
                 <BaddieBlueprint />
                 <FrostedSoulMirror />
 
@@ -1447,14 +1393,10 @@ export default function App() {
               </motion.div>
             )}
             
-            {/* 4. Footer */}
             <footer className="py-24 text-center border-t border-gold/10 bg-white/50">
               <p className="font-serif italic text-luxury-black/40 text-sm">Created with love for a soul of pure gold.</p>
-              
               <div className="mt-8 space-y-3">
-                <p className="text-[10px] uppercase tracking-[0.5em] text-luxury-black/60 font-light">
-                  Designed & Crafted by <span className="text-gold font-medium">Harsh Pandya</span>
-                </p>
+                <p className="text-[10px] uppercase tracking-[0.5em] text-luxury-black/60 font-light">Designed & Crafted by <span className="text-gold font-medium">Harsh Pandya</span></p>
                 <p className="text-[8px] uppercase tracking-[0.4em] text-gold/40">© 2026 Forever Anushka</p>
               </div>
             </footer>
@@ -1462,9 +1404,8 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Progress Bar top of screen */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-[4px] bg-gold origin-left z-[160]"
+        className="fixed top-0 left-0 right-0 h-[4px] bg-gold origin-left z-[1000]"
         style={{ scaleX: scrollYProgress }}
       />
     </div>
