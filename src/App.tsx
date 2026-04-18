@@ -1302,11 +1302,27 @@ const GermanyDream = () => {
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [hasCelebrated, setHasCelebrated] = useState(false);
   const { scrollYProgress } = useScroll();
 
   const isLocked = new Date() < TARGET_DATE;
 
-  // --- Effects ---
+  // This effect handles the one-time birthday celebration burst
+  useEffect(() => {
+    if (!isLocked && !hasCelebrated) {
+      const handleScroll = () => {
+        // Trigger celebration when user scrolls into the birthday content
+        if (window.scrollY > window.innerHeight * 1.2) {
+          setHasCelebrated(true);
+          window.removeEventListener('scroll', handleScroll);
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [isLocked, hasCelebrated]);
+
+  // --- Smooth Scroll Logic ---
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -1339,6 +1355,9 @@ export default function App() {
   return (
     <div className="relative bg-cream min-h-screen overflow-x-hidden selection:bg-gold/30 selection:text-luxury-black luxury-grain">
       <CursorGlow />
+      
+      {/* The Awesome Birthday Burst */}
+      <CelebrationBurst trigger={hasCelebrated} />
 
       <AnimatePresence mode="wait">
         {showIntro ? (
@@ -1350,7 +1369,7 @@ export default function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            {/* Hero Section */}
+            {/* 1. Hero Section */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
               <div className="absolute inset-0 pointer-events-none">
                 <Lily delay={0} scale={0.8} />
@@ -1395,9 +1414,11 @@ export default function App() {
               </motion.div>
             </section>
 
+            {/* 2. Timer Section */}
             <CountdownSection />
             
-            {new Date() >= TARGET_DATE && (
+            {/* 3. Revealed Content (Only after her Birthday) */}
+            {!isLocked && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -1426,6 +1447,7 @@ export default function App() {
               </motion.div>
             )}
             
+            {/* 4. Footer */}
             <footer className="py-24 text-center border-t border-gold/10 bg-white/50">
               <p className="font-serif italic text-luxury-black/40 text-sm">Created with love for a soul of pure gold.</p>
               
@@ -1440,6 +1462,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
+      {/* Progress Bar top of screen */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-[4px] bg-gold origin-left z-[160]"
         style={{ scaleX: scrollYProgress }}
