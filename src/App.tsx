@@ -1107,30 +1107,65 @@ const BloomingBouquet = () => {
   );
 };
 
-const CountdownSection = () => {
+const CelebrationBurst = ({ trigger }: { trigger: boolean }) => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center p-8 text-center relative overflow-hidden bg-white/30">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10"
-      >
-        <span className="text-[10px] uppercase tracking-[1.2em] text-gold mb-12 block">The Grand Reveal In</span>
-        <div className="scale-110 md:scale-150 mb-16">
-          <Countdown onComplete={() => {}} />
+    <AnimatePresence>
+      {trigger && (
+        <div className="fixed inset-0 pointer-events-none z-[300] flex items-center justify-center overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.3, 0] }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 bg-gold/20"
+          />
+          {[...Array(80)].map((_, i) => {
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 500 + Math.random() * 800;
+            const x = Math.cos(angle) * velocity;
+            const y = Math.sin(angle) * velocity;
+            return (
+              <motion.div
+                key={i}
+                initial={{ scale: 0, x: 0, y: 0, opacity: 1, rotate: 0 }}
+                animate={{ 
+                  x: x, y: y, 
+                  scale: [0, 1.5, 0.5, 0],
+                  rotate: Math.random() * 720,
+                  opacity: [1, 1, 1, 0]
+                }}
+                transition={{ duration: 1.5 + Math.random() * 2, ease: [0.12, 0, 0.39, 0], delay: Math.random() * 0.1 }}
+                className="absolute"
+                style={{ color: i % 3 === 0 ? '#D4AF37' : i % 3 === 1 ? '#FFD700' : '#FFC0CB' }}
+              >
+                {i % 4 === 0 ? <Heart size={20} fill="currentColor" /> : 
+                 i % 4 === 1 ? <Sparkles size={24} /> : 
+                 i % 4 === 2 ? <Star size={18} fill="currentColor" /> :
+                 <div className="w-2 h-2 rounded-full bg-current" />}
+              </motion.div>
+            );
+          })}
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: -10 }}
+            animate={{ opacity: [0, 1, 1, 1, 0], scale: [0.5, 1.1, 1, 1, 0.8], rotate: [ -10, 0, 0, 2, 0 ] }}
+            transition={{ duration: 4, times: [0, 0.1, 0.2, 0.8, 1] }}
+            className="relative z-10 text-center"
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-luxury-black/80 backdrop-blur-xl border-2 border-gold/50 px-16 py-8 rounded-[40px] shadow-[0_0_50px_rgba(212,175,55,0.3)]"
+            >
+              <span className="text-gold text-[10px] uppercase tracking-[1em] mb-4 block">Hooray!</span>
+              <h2 className="font-serif italic text-5xl sm:text-7xl text-white leading-tight">
+                Happy Birthday, <br/> <span className="text-gold">Anushkaaaaaa!</span>
+              </h2>
+              <div className="h-[1px] w-12 bg-gold/50 mx-auto my-6" />
+              <p className="font-script text-3xl text-white/90">Chota don</p>
+            </motion.div>
+          </motion.div>
         </div>
-        
-        <div className="flex flex-col items-center gap-4 group">
-          <div className="flex items-center gap-4 px-8 py-3 rounded-full border border-gold/20 bg-gold/5 text-gold">
-            <Lock size={16} />
-            <span className="text-[10px] uppercase tracking-[0.4em] font-bold">
-              Locked Until 11.08.2026
-            </span>
-          </div>
-        </div>
-      </motion.div>
-    </section>
+      )}
+    </AnimatePresence>
   );
 };
 
