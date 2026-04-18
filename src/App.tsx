@@ -20,31 +20,30 @@ const INTRO_BOOK_PHOTO = "./intro.jpg.jpg";
 // 3. The Photo behind the "Frosted Soul Mirror"
 const MIRROR_PHOTO_URL = "./mirror.jpg.jpg";
 
-// 3. The Library Books (Titles, Colors, Content, and Photos)
 const BOOKS = [
   { 
     title: "The Gym Encounter", 
     color: "bg-[#1a2a4a]", 
     content: "Where it all began. A simple conversation that changed everything.",
-    photo: "https://picsum.photos/seed/gym/400/600" 
+    photo: "./book1.jpg.JPG" 
   },
   { 
     title: "The Germany Dream", 
     color: "bg-[#4a1a1a]", 
     content: "Chasing freedom and building a future in the land of dreams.",
-    photo: "https://picsum.photos/seed/germany/400/600" 
+    photo: "./book2.jpg.JPG" 
   },
   { 
     title: "Taylor's Version", 
     color: "bg-[#2d1a4a]", 
     content: "Finding strength in lyrics and magic in every melody.",
-    photo: "https://picsum.photos/seed/taylor/400/600" 
+    photo: "./book3.jpg.JPG" 
   },
   { 
     title: "Pure Soul", 
     color: "bg-[#1a4a2d]", 
     content: "The essence of who you are. Rare, true, and unforgettable.",
-    photo: "https://picsum.photos/seed/soul/400/600" 
+    photo: "./book4.jpg.JPG" 
   },
 ];
 
