@@ -6,7 +6,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
 import { Heart, Star, Camera, ChevronDown, Sparkles, Music, Volume2, VolumeX, Flower2, Wind, Lock, Unlock, ShieldCheck, BookOpen, Map, Plane, Zap, Quote, Compass, Eraser, Clock, Home, Utensils, DollarSign, Dog, Cat, Fingerprint, Dumbbell } from 'lucide-react';
-
 // --- CONFIGURATION (EASY TO EDIT) ---
 // Just replace these links with your own photos and videos!
 
