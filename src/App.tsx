@@ -11,7 +11,7 @@ import { Heart, Star, Camera, ChevronDown, Sparkles, Music, Volume2, VolumeX, Fl
 // Just replace these links with your own photos and videos!
 
 // 1. The Target Date (Her Birthday)
-const TARGET_DATE = new Date('2026-08-11T00:00:00');
+const TARGET_DATE = new Date('2026-01-11T00:00:00');
 
 // 2. The Photo inside the Intro Book
 const INTRO_BOOK_PHOTO = "./intro.jpg.jpg";
