@@ -3,10 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
-import { Heart, Star, Camera, ChevronDown, Sparkles, Music, Volume2, VolumeX, Flower2, Wind, Lock, Unlock, ShieldCheck, BookOpen, Map, Plane, Zap, Quote, Compass, Eraser } from 'lucide-react';
-import Lenis from 'lenis';
+import { Heart, Star, Camera, ChevronDown, Sparkles, Music, Volume2, VolumeX, Flower2, Wind, Lock, Unlock, ShieldCheck, BookOpen, Map, Plane, Zap, Quote, Compass, Eraser, Clock, Home, Utensils, DollarSign, Dog, Cat, Fingerprint, Dumbbell } from 'lucide-react';
 
 // --- CONFIGURATION (EASY TO EDIT) ---
 // Just replace these links with your own photos and videos!
@@ -1222,6 +1221,100 @@ const VideoSection = () => {
   );
 };
 
+const SignatureA = () => {
+  return (
+    <div className="relative group/sig h-32 w-32 flex items-center justify-center">
+      <svg width="120" height="120" viewBox="0 0 100 100" className="text-gold fill-none overflow-visible">
+        <defs>
+          <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#C5A059" />
+            <stop offset="50%" stopColor="#FDFCF8" />
+            <stop offset="100%" stopColor="#C5A059" />
+          </linearGradient>
+          <filter id="beauty-glow"><feGaussianBlur stdDeviation="1.5" result="glow" /><feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+        </defs>
+        <motion.path d="M20 70 C 25 30, 45 15, 55 20 C 65 25, 75 50, 70 80 M45 45 C 55 42, 65 42, 75 48" stroke="url(#gold-grad)" strokeWidth="2" strokeLinecap="round" filter="url(#beauty-glow)" initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }} />
+        {[...Array(5)].map((_, i) => (
+          <motion.circle key={`sparkle-a-${i}`} r="1" className="fill-white" initial={{ opacity: 0 }} whileInView={{ opacity: [0, 1, 0], scale: [0, 1.5, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 1 + (i * 0.2), ease: "easeInOut" }}>
+            <animateMotion dur="3s" path="M20 70 C 25 30, 45 15, 55 20 C 65 25, 75 50, 70 80 M45 45 C 55 42, 65 42, 75 48" rotate="auto" repeatCount="1" begin="0s" />
+          </motion.circle>
+        ))}
+      </svg>
+      <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1], rotate: [0, 90, 180, 270, 360] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute inset-0 bg-gradient-to-tr from-gold/20 via-transparent to-white/10 blur-2xl rounded-full -z-10" />
+    </div>
+  );
+};
+
+const SignatureH = () => (
+  <div className="relative group/sig h-32 w-32 flex items-center justify-center">
+    <svg width="120" height="120" viewBox="0 0 100 100" className="text-gold fill-none overflow-visible font-serif">
+      <motion.path d="M25 25 C 28 40, 28 60, 25 85 M75 25 C 72 40, 72 60, 75 85 M25 55 C 40 50, 60 50, 75 55" stroke="url(#gold-grad)" strokeWidth="2" strokeLinecap="round" filter="url(#beauty-glow)" initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} transition={{ duration: 3, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} />
+      {[...Array(5)].map((_, i) => (
+        <motion.circle key={`sparkle-h-${i}`} r="1" className="fill-white" initial={{ opacity: 0 }} whileInView={{ opacity: [0, 1, 0], scale: [0, 1.5, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 1.5 + (i * 0.2), ease: "easeInOut" }}>
+          <animateMotion dur="3s" path="M25 25 C 28 40, 28 60, 25 85 M75 25 C 72 40, 72 60, 75 85 M25 55 C 40 50, 60 50, 75 55" rotate="auto" repeatCount="1" begin="0.5s" />
+        </motion.circle>
+      ))}
+    </svg>
+    <motion.div animate={{ scale: [1.3, 1, 1.3], opacity: [0.1, 0.2, 0.1], rotate: [360, 270, 180, 90, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute inset-0 bg-gradient-to-bl from-white/10 via-transparent to-gold/20 blur-2xl rounded-full -z-10" />
+  </div>
+);
+
+const BloomingFlower = ({ className, delay = 0 }: { className: string, delay?: number }) => (
+  <motion.div initial={{ scale: 0, opacity: 0, rotate: -45 }} whileHover={{ scale: 1, opacity: 1, rotate: 0 }} transition={{ duration: 0.5, delay }} className={className}><Flower2 size={24} className="text-gold/40" /></motion.div>
+);
+
+const TheFutureDeal = () => {
+  const dealPoints = useMemo(() => [
+    { title: "The Sacred Pact", description: "A promise whispered in the gym, now etched in the stars: If the world hasn't found us by thirty, we find each other.", icon: <Clock size={32} className="text-gold" /> },
+    { title: "Our Sanctuary", description: "A home in the States filled with the pitter-patter of one dog, one cat, and our shared laughter.", icon: <Home size={32} className="text-gold" /> },
+    { title: "The Saturday Vow", description: "Every Saturday night, the world stops for us. A fresh bouquet, a date, and pure magic.", icon: <Flower2 size={32} className="text-gold" /> },
+    { title: "The Sunday Rhythm", description: "Slow mornings, shared recipes, and building a life one meal at a time.", icon: <Utensils size={32} className="text-gold" /> }
+  ], []);
+
+  const butterflies = useMemo(() => [...Array(30)].map((_, i) => ({
+    delay: i * 0.2, duration: 8 + Math.random() * 4, xStart: 50 + (Math.random() * 40 - 20), xEnd: 50 + (Math.random() * 100 - 50), yEnd: 10 + (Math.random() * 20), color: ['#C5A059', '#FDFCF8', '#F8E8E8'][i % 3]
+  })), []);
+
+  const { scrollYProgress } = useScroll();
+  const smoothY = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
+
+  return (
+    <section className="py-40 bg-luxury-black text-cream relative overflow-hidden group/pact">
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        {[...Array(3)].map((_, i) => (
+          <motion.div key={`ripple-${i}`} animate={{ scale: [1, 2.5], opacity: [0.15, 0] }} transition={{ duration: 4, repeat: Infinity, delay: i * 1.3, ease: "easeOut" }} className="absolute w-[500px] h-[500px] border border-gold/20 rounded-full" />
+        ))}
+      </div>
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+        <motion.div style={{ y: useTransform(smoothY, [0, 1], [100, -300]) }} className="absolute top-[20%] left-[10%] opacity-10"><Plane size={120} className="text-gold" /></motion.div>
+        <motion.div style={{ y: useTransform(smoothY, [0, 1], [50, -500]) }} className="absolute bottom-[20%] left-[5%] opacity-10"><Dog size={100} className="text-gold" /></motion.div>
+      </div>
+      <div className="max-w-6xl mx-auto px-6 relative z-10 text-center">
+        <h2 className="font-display italic text-6xl md:text-9xl mb-24 text-gradient-gold">The Eternal Pact</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {dealPoints.map((point) => (
+             <motion.div key={point.title} className="p-12 border border-white/5 rounded-[60px] bg-white/[0.02] backdrop-blur-3xl group hover:border-gold/30 transition-all duration-700 relative">
+               {point.title === "The Saturday Vow" && <BloomingFlower className="absolute -top-4 -left-4" delay={0.1} />}
+               <div className="w-24 h-24 rounded-full bg-gold/5 flex items-center justify-center mb-10 mx-auto">{point.icon}</div>
+               <h3 className="font-display text-3xl text-gold italic mb-6">{point.title}</h3>
+               <p className="text-lg font-serif italic text-white/60">{point.description}</p>
+             </motion.div>
+          ))}
+        </div>
+        <motion.div className="mt-32 p-16 border border-gold/20 rounded-[80px] bg-white/5 relative overflow-hidden">
+          <Fingerprint className="text-gold/20 mx-auto mb-10 animate-pulse" size={60} />
+          <p className="font-display text-3xl md:text-5xl italic text-cream mb-12">"You were the first soul I ever chose... <span className="text-gold">it was always you.</span>"</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-24">
+             <div className="relative"><SignatureA /><span className="text-[8px] uppercase tracking-widest mt-4 block">The Chosen One</span></div>
+             <p className="font-script text-4xl text-gold/20">&</p>
+             <div className="relative"><SignatureH /><span className="text-[8px] uppercase tracking-widest mt-4 block">The Constant</span></div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const FinalWish = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center p-8 text-center relative bg-cream overflow-hidden">
@@ -1389,6 +1482,7 @@ export default function App() {
                 <PolaroidRoller />
                 <BloomingBouquet />
                 <VideoSection />
+                <TheFutureDeal />
                 <FinalWish />
               </motion.div>
             )}
